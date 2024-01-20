@@ -46,8 +46,23 @@ from cars
 where model = 'KIA';
 #
 знайти середнє арифметичне цін для кожної марки машин окремо
-# підрахувати кількість кожної марки
-# знайти марку машин кількість яких найбільше
+select model, avg(price) as avgPrice
+from cars
+group by model # підрахувати кількість кожної марки
+select model, count(model) as countModel
+from cars
+group by model # знайти марку машин кількість яких найбільше
+select model, count(model) as countModel
+from cars
+group by model
+order by countModel desc limit 1
 #
 # знайти марку машини в назві яких друга та передостання буква "a"
-# знайти всі машини назва моделі яких більше за 8 символів
+select *
+from cars
+where (model like '_a%' and model like '%a_');
+#
+знайти всі машини назва моделі яких більше за 8 символів
+select *
+from cars
+where length(model) > 8
