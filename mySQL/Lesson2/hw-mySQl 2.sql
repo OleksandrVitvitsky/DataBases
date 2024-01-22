@@ -21,7 +21,9 @@ select distinct client.FirstName from client;
 select client.FirstName,a.Sum from client join vav.application a on client.idClient = a.Client_idClient
 where a.Sum > 5000;
 #9.Порахувати кількість клієнтів усіх відділень та лише львівських відділень.
-
+select department.DepartmentCity, count(c.FirstName) as countClient from department
+    left join vav.client c on department.idDepartment = c.Department_idDepartment
+group by department.DepartmentCity;
 #10.Знайти кредити, які мають найбільшу суму для кожного клієнта окремо.
 
 #11. Визначити кількість заявок на крдеит для кожного клієнта.
